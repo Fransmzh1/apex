@@ -1,0 +1,70 @@
+# Docker
+
+# Build directories (your two build folders)
+dbxe/apex/
+ords/executable/
+ords/i/
+ords/sqlcl/
+
+# Docker data
+**/data/
+**/logs/
+**/tmp/
+
+# Environment files (except template)
+.env
+!.env.example
+!.env.template
+
+# Docker volumes
+**/volumes/
+**/storage/
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Logs
+*.log
+logs/
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Dependency directories
+node_modules/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+pip-log.txt
+pip-delete-this-directory.txt
+.tox
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+.hypothesis/
+.pytest_cache/
+
+# Temporary files
+*.tmp
+*.temp
