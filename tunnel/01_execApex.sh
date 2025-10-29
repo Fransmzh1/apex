@@ -20,7 +20,6 @@ EOF
     sts=$?
     if [ $sts -ne 0 ]; then
         echo "Gagal install APEX"
-        echo "$(date -Iseconds)" > "$ORACLE_BASE"/oradata/.APEX.failed
         exit $sts
     fi
     

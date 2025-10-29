@@ -2,47 +2,51 @@ name: apex
 
 services:
   db:
-    image: container-registry.oracle.com/database/express:21.3.0-xe
+    # image: container-registry.oracle.com/database/express:21.3.0-xe
+    image: fransmzh/apexdb:1.0
     container_name: oracle-xe
     hostname: dbxe
     restart: unless-stopped
     environment:
       - ORACLE_PWD=Oracle123
-      - APX_PWD=Mustika_Jay4
-      - ORACLE_CHARACTERSET=AL32UTF8
+      - APX_PWD=Mustika_jay4
     volumes:
-      - oradata:/opt/oracle/oradata
+      # - oradata:/opt/oracle/oradata
       # scripts to run ORacle APEX. make sure all sh file is executable by all users
-      - /home/frans/oracle/scripts/apex/24.2.0/apex:/opt/oracle/scripts/apex
-      - ./dbxe/scripts/01_execApex.sh:/opt/oracle/scripts/startup/01_execApex.sh
-      - ./dbxe/scripts/checkAPEXStatus.sh:/opt/oracle/checkAPEXStatus.sh:rwx
+      # - /home/frans/oracle/scripts/apex/24.2.0/apex:/opt/oracle/scripts/apex
+      # - ./dbxe/scripts/01_execApex.sh:/opt/oracle/scripts/startup/01_execApex.sh
+      # - ./dbxe/scripts/checkAPEXStatus.sh:/opt/oracle/checkAPEXStatus.sh:rwx
+      - ./tunnel:/opt/tunnel
     ports:
       - "11521:1521"
     networks:
       - oracle-network
-    healthcheck:
-      test: ["CMD", "/opt/oracle/checkAPEXStatus.sh"]
-      interval: 30s
-      timeout: 10s
-      retries: 10
-      start_period: 30s
+    # healthcheck:
+    #   test: ["CMD", "/opt/oracle/checkAPEXStatus.sh"]
+    #   interval: 30s
+    #   timeout: 10s
+    #   retries: 10
+    #   start_period: 30s
 
   oracle-ords:
-    image: container-registry.oracle.com/database/ords:25.0.0
+    image: fransmzh/ords:v1
     container_name: oracle-ords
     hostname: oracle-ords
     restart: unless-stopped
-    environment:
-      - ORACLE_HOST=oracle-xe
-      - ORACLE_PORT=1521
-      - ORACLE_SERVICE=XEPDB1
-      - ORACLE_PWD=Oracle123
-      - ORDS_PWD=Oracle123
-      - ORDS_MODE=standalone
-      - STANDALONE_HTTP_PORT=8080
-    volumes:
-      - ords-config:/opt/oracle/ords/config
-      - ./apex-scripts:/opt/oracle/scripts/apex:ro
+    # environment:
+    #   - ORACLE_HOST=dbxe
+    #   - ORACLE_PORT=1521
+    #   - ORACLE_SERVICE=XEPDB1
+    #   - ORACLE_PWD=Oracle123
+    #   - ORDS_PWD=Oracle123
+    #   - ORDS_MODE=standalone
+    #   - STANDALONE_HTTP_PORT=8080
+    # volumes:
+    #   - ./ords/ords-config:/opt/oracle/ords/config
+    #   - ./ords/i:/usr/local/tomcat/webapps/i # directory for images
+    #   - ./ords/executable/ords.war:/usr/local/tomcat/webapps/ords.war # ords war file
+      # - ./ords/i:/opt/images # directory for images
+      # - ./executable:/opt/ords # directory for ords executebles
     ports:
       - "8080:8080"
     depends_on:
@@ -50,12 +54,13 @@ services:
         condition: service_healthy
     networks:
       - oracle-network
-    healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:8080/ords"]
-      interval: 30s
-      timeout: 10s
-      retries: 10
-      start_period: 60s
+    # command: bash -c "cp -r /usr/local/tomcat/webapps.dist/* /usr/local/tomcat/webapps"
+    # healthcheck:
+    #   test: ["CMD", "curl", "-f", "http://localhost:8080/ords"]
+    #   interval: 30s
+    #   timeout: 10s
+    #   retries: 10
+    #   start_period: 60s
 
 volumes:
   oradata:

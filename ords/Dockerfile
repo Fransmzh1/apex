@@ -1,10 +1,9 @@
-FROM tomcat:9.0
+FROM tomcat:9.0.111-jdk21-corretto-al2
 
 EXPOSE 8080
 
 WORKDIR /opt
-RUN mkdir ords_config
-RUN mkdir ords
+RUN mkdir ords ords_config
 COPY executable ords
 # COPY ords_config ords_config
 COPY sqlcl sqlcl
@@ -22,4 +21,5 @@ COPY context.xml webapps/manager/META-INF
 COPY tomcat-users.xml conf   
 
 ENV JAVA_OPTS="-Dconfig.url=/opt/ords_config"
-
+ENV PATH="/opt/ords/bin:$PATH"
+ENV ORDS_CONFIG="/opt/ords_config"
