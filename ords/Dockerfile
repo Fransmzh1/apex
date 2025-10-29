@@ -4,6 +4,7 @@ EXPOSE 8080
 
 WORKDIR /opt
 RUN mkdir ords ords_config
+RUN chmod 777 ords_config
 COPY executable ords
 # COPY ords_config ords_config
 COPY sqlcl sqlcl
