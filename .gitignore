@@ -5,7 +5,7 @@ dbxe/apex/
 ords/executable/
 ords/i/
 ords/sqlcl/
-backdoor/
+tunnel/
 
 # Docker data
 **/data/
