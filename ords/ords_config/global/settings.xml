@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
-<properties>
-<comment>Saved on Sat Oct 25 12:16:37 UTC 2025</comment>
-<entry key="database.api.enabled">true</entry>
-<entry key="standalone.doc.root">/opt/ords/ords_config/global/doc_root</entry>
-<entry key="standalone.http.port">8080</entry>
-<entry key="standalone.static.path">/usr/local/tomcat/webapps/i</entry>
-</properties>

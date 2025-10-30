@@ -1,1 +1,0 @@
-CONN_STRING='sys/Oracle123@xe:1521/XEPDB1'

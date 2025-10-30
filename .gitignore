@@ -2,10 +2,11 @@
 
 # Build directories (your two build folders)
 dbxe/apex/
-ords/executable/
-ords/i/
+ords/ords_codes/
+ords/images/
 ords/sqlcl/
 tunnel/
+**/ords_config*/
 
 # Docker data
 **/data/
