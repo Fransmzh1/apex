@@ -6,10 +6,6 @@ WORKDIR /opt
 RUN mkdir ords ords_config
 RUN chmod 777 ords_config
 COPY ords_codes ords
-COPY setup_ords.sh /opt
-RUN chmod 774 setup_ords.sh
-# COPY ords_config ords_config
-# COPY sqlcl sqlcl
 
 WORKDIR /usr/local/tomcat
 RUN mkdir webapps/i
@@ -24,4 +20,8 @@ COPY tomcat-users.xml conf
 ENV JAVA_OPTS="-Dconfig.url=/opt/ords_config"
 ENV PATH="/opt/ords/bin:$PATH"
 ENV ORDS_CONFIG="/opt/ords_config"
+
+WORKDIR /opt
+COPY setup_ords.sh .
+RUN chmod 774 setup_ords.sh
 

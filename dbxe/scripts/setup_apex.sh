@@ -21,4 +21,3 @@ EOF
 
 cd ..
 rm -r apex
-rm -r setup_apex.sh

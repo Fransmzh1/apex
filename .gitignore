@@ -2,8 +2,8 @@
 
 # Build directories (your two build folders)
 dbxe/apex/
-ords/ords_codes/
-ords/images/
+**/ords_codes/
+**/images/
 ords/sqlcl/
 tunnel/
 **/ords_config*/
