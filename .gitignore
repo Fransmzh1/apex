@@ -2,11 +2,13 @@
 
 # Build directories (your two build folders)
 dbxe/apex/
+dbxe/patchset10
 **/ords_codes/
 **/images/
 ords/sqlcl/
 tunnel/
 **/ords_config*/
+ords/sqlcl
 
 # Docker data
 **/data/
@@ -15,6 +17,7 @@ tunnel/
 
 # Environment files (except template)
 .env
+*.env
 !.env.example
 !.env.template
 

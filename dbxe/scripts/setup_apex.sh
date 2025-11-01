@@ -4,20 +4,16 @@ cd /opt/oracle/scripts/apex
 
 echo "Waiting for Oracle Database to start..."
 sqlplus -s / as sysdba <<EOF
-prompt Akan start database
-startup;
-prompt database started..
+    prompt Akan start database
+    startup;
 
-prompt akan install APEX..
+    alter session set container=XEPDB1;
+    @apxsilentins.sql SYSAUX SYSAUX TEMP /i/ ${APX_PWD} ${APX_PWD} ${APX_PWD} ${APX_PWD} 
 
-alter session set container=XEPDB1;
-@apxsilentins.sql SYSAUX SYSAUX TEMP /i/ ${APX_PWD} ${APX_PWD} ${APX_PWD} ${APX_PWD} 
-alter user APEX_240200 account unlock identified by ${APX_PWD};
-
-prompt akan shutdown database...
-shutdown
-exit
+    prompt akan shutdown database...
+    shutdown
+    exit
 EOF
 
-cd ..
-rm -r apex
+# cd ..
+# rm -r apex

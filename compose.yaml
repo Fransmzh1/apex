@@ -3,24 +3,26 @@ name: apex
 services:
 
   db:
-    image: fransmzh/apexdb:1.0
+    image: fransmzh/apexdb:1.1-ps10
     container_name: oracle-xe
     hostname: dbxe
     restart: unless-stopped
-    environment:
-      - ORACLE_PWD=Oracle123
-      - APX_PWD=Mustika_jay4
+    # environment:
+    #   - ORACLE_PWD=Oracle123
+      # - APX_PWD=Mustika_jay4
+    env_file:
+     - ./all.env
     volumes:
-      - oradata:/opt/oracle/oradata
+      # - oradata:/opt/oracle/oradata
       - ./tunnel:/opt/tunnel:rw
     ports:
       - "11521:1521"
     networks:
-      - oracle-network
+      - oranet
 
   oracle-ords:
-    image: fransmzh/ords:1.0
-    build: ./ords
+    image: fransmzh/ords:1.1-sqlcl
+    # build: ./ords
     container_name: ora-ords
     hostname: oracle-ords
     restart: unless-stopped
@@ -28,9 +30,10 @@ services:
       - ORACLE_HOST=dbxe
       - ORACLE_PORT=1521
       - ORACLE_SERVICE=XEPDB1
-      - ORACLE_PWD=Oracle123
+    env_file:
+     - ./all.env
     volumes:
-      - ords-config:/opt/ords_config
+      # - ords-config:/opt/ords_config
       - ./tunnel:/opt/tunnel:rw
     ports:
       - "8080:8080"
@@ -38,14 +41,14 @@ services:
       db:
         condition: service_healthy
     networks:
-      - oracle-network
+      - oranet
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:8080/ords"]
       interval: 15s
       timeout: 10s
       retries: 6
       start_period: 10s
-    command: bash -c "/opt/setup_ords.sh"
+    # command: bash -c "/opt/setup_ords.sh"
 
 volumes:
   oradata:
@@ -54,5 +57,5 @@ volumes:
     driver: local
 
 networks:
-  oracle-network:
+  oranet:
     driver: bridge
