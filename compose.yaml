@@ -3,7 +3,7 @@ name: apex
 services:
 
   db:
-    image: fransmzh/apexdb:12-ps10exec
+    image: fransmzh/apexdb:1.2-ps10
     container_name: oracle-xe
     hostname: dbxe
     restart: unless-stopped
