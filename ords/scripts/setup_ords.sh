@@ -5,11 +5,11 @@ if [ -f ${ORDS_CONFIG}/.wks.created ]; then
 
 else
     echo Initial workspace creating .. 
-    echo ${ORACLE_PWD}
+    cd /opt/scripts
+    
     sql -s sys/${ORACLE_PWD}@db:1521/XEPDB1 as sysdba <<EOF
     cd scripts
     set heading off;
-    select 'ini jalan dari sqlcl' from dual;
     @cr_user.sql
     @WKS1.sql
     exit;

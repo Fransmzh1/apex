@@ -3,13 +3,11 @@ name: apex
 services:
 
   db:
-    image: fransmzh/apexdb:1.1-ps10
+    image: fransmzh/apexdb:12-ps10exec
     container_name: oracle-xe
     hostname: dbxe
     restart: unless-stopped
     # environment:
-    #   - ORACLE_PWD=Oracle123
-      # - APX_PWD=Mustika_jay4
     env_file:
      - ./all.env
     volumes:
@@ -21,7 +19,7 @@ services:
       - oranet
 
   oracle-ords:
-    image: fransmzh/ords:1.1-sqlcl
+    image: fransmzh/ords:1.2-ps10
     # build: ./ords
     container_name: ora-ords
     hostname: oracle-ords

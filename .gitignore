@@ -5,6 +5,7 @@ dbxe/apex/
 dbxe/patchset10
 **/ords_codes/
 **/images/
+patch10_images/
 ords/sqlcl/
 tunnel/
 **/ords_config*/
