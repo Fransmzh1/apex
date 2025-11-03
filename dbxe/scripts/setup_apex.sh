@@ -15,5 +15,4 @@ sqlplus -s / as sysdba <<EOF
     exit
 EOF
 
-# cd ..
-# rm -r apex
+

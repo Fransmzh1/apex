@@ -19,6 +19,7 @@ ords/sqlcl
 # Environment files (except template)
 .env
 *.env
+all.env
 !.env.example
 !.env.template
 
