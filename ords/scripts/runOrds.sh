@@ -14,12 +14,11 @@ if [ -f "$ORDS_CONFIG"/.ords.created ]; then
    echo Ords already setup, starting ords..
   
 else
-   check_user_ords.sh
-   sts=$?
+   ./check_user_ords.sh
 
-   if [ $sts -eq 0 ]; then
+   if [ $? -eq 0 ]; then
       echo User ORDS already exists, dropping user ORDS*..
-      drop_user_ords.sh
+      ./drop_user_ords.sh
    fi 
 
    echo Akan setup ords..
