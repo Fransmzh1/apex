@@ -116,14 +116,6 @@ wwv_flow_fnd_user_api.create_user_group (
   p_GROUP_DESC => '');
 end;
 /
-begin
-wwv_flow_fnd_user_api.create_user_group (
-  p_id => 3434143210005835,
-  p_GROUP_NAME => 'Dapur',
-  p_SECURITY_GROUP_ID => 4434177535915918,
-  p_GROUP_DESC => '');
-end;
-/
 prompt  Creating group grants...
 ----------------
 -- U S E R S
@@ -164,7 +156,7 @@ wwv_flow_fnd_user_api.create_fnd_user (
   p_email_address                => 'ayra.dibaq@gmail.com',
   p_web_password                 => '11F349E5FC67A4E67138606D0AE49301AE79AB59723A404CCCC2498A358DF7672EE29EDE252C6470DAEF0A8551BEDD61EE3A0DF95E968BA6565C02E8DDA824A4',
   p_web_password_format          => '5;5;10000',
-  p_group_ids                    => '3433951197003566:',
+  p_group_ids                    => '',
   p_developer_privs              => '',
   p_default_schema               => 'MBG',
   p_account_locked               => 'N',
@@ -185,7 +177,7 @@ wwv_flow_fnd_user_api.create_fnd_user (
   p_first_name                   => 'Erwin',
   p_last_name                    => 'Umar',
   p_description                  => '',
-  p_email_address                => 'erwin@gmail.com',
+  p_email_address                => 'faturananta@yahoo.com	',
   p_web_password                 => '0DD9F90194747F3D6EE99F1D03FBD4D817C8B86289E4F714D4B1E8BBB19A0030D0B66EBF5D6F1F4856D3C9FB7A449F63E81F6D63F3CF4C2964CBADBFC38C1BA7',
   p_web_password_format          => '5;5;10000',
   p_group_ids                    => '',
