@@ -1,24 +1,17 @@
 #!/bin/bash
 
 
-###################################
-# !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! #
-############# MAIN ################
-# !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! #
-###################################
-
-
 # Check whether ords config already exists
 if [ -f "$ORDS_CONFIG"/.ords.created ]; then
      
-   echo Ords already setup, starting ords..
+   echo Ords already setup, starting tomcat..
   
 else
-   ./check_user_ords.sh
+   "$SCRIPT_BASE"/is_user_ords_exist.sh
 
    if [ $? -eq 0 ]; then
       echo User ORDS already exists, dropping user ORDS*..
-      ./drop_user_ords.sh
+      "$SCRIPT_BASE"/drop_user_ords.sh
    fi 
 
    echo Akan setup ords..
@@ -35,10 +28,10 @@ EOF
 
   # Execute custom provided setup scripts
 
-#   /opt/scripts/runUserScripts.sh /opt/scripts/startup
+  "$SCRIPT_BASE"/runUserScripts.sh "$SCRIPT_BASE"/startup
 
 fi;
 
-
+echo ""
 echo Akan start tomcat
 catalina.sh run
