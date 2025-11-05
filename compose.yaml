@@ -13,8 +13,7 @@ services:
     volumes:
       # - oradata:/opt/oracle/oradata
       - ./tunnel:/opt/tunnel:rw
-      - ./dbxe/script_workspace:/opt/oracle/scripts/workspace:rw
-      - ./dbxe/script_workspace/install_wks.sh:/opt/oracle/scripts/startup:rx
+      - ./dbxe/script_workspace:/opt/oracle/scripts/startup
     ports:
       - "11521:1521"
     networks:
@@ -34,7 +33,7 @@ services:
      - ./all.env
     volumes:
       # - ords-config:/opt/ords_config
-      - ./script_start:/opt/scripts/startup
+      - ./ords/script_startup:/opt/scripts/startup
       - ../mbg:/opt/tunnel:rw
     ports:
       - "8080:8080"

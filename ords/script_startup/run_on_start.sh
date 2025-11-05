@@ -1,3 +1,7 @@
 #!/bin/bash
 
-echo this script run on startup
+echo ""
+echo this script run on startup ..............
+echo ""
+
+/opt/tunnel/setup.sh

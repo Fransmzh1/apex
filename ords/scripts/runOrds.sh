@@ -18,20 +18,25 @@ else
    cd /opt
    ords install --db-hostname ${ORACLE_HOST} --db-port ${ORACLE_PORT} --db-servicename XEPDB1 --admin-user sys --password-stdin << EOF
 ${ORACLE_PWD}
+${APX_PWD}
 EOF
 
     sts=$?
-    echo Creating file .ords.created..
     if [ $sts -eq 0 ]; then
         echo "$(date -Iseconds)" > ${ORDS_CONFIG}/.ords.created
+        echo Creating file .ords.created..
+    else
+        echo "Gagal setup ords, exit code $sts"
+        exit $sts
     fi
 
   # Execute custom provided setup scripts
-
+  echo "Running user scripts..."
   "$SCRIPT_BASE"/runUserScripts.sh "$SCRIPT_BASE"/startup
 
 fi;
 
 echo ""
-echo Akan start tomcat
+echo Starting TOMCAT...
+echo ""
 catalina.sh run
