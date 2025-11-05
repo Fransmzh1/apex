@@ -5,7 +5,7 @@ SET FEEDBACK OFF;
 DECLARE
     l_username VARCHAR2(30);
 BEGIN
-    SELECT username INTO l_username FROM dba_users WHERE username = 'ORDS_PUBLIC_USR';
+    SELECT username INTO l_username FROM dba_users WHERE username = 'ORDS_PUBLIC_USER';
 END;
 /
 exit;
