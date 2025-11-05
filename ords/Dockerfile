@@ -14,4 +14,3 @@ ENV ORDS_CONFIG="/opt/ords_config"
 ENV ORACLE_PWD=dukuhzamrud
 
 CMD [ "bash","-c","/opt/scripts/runOrds.sh" ]
-# CMD [ "bash","-c","echo Selesai......" ]
