@@ -4,7 +4,7 @@ sqlplus -s "/ as sysdba" <<EOF
 
 alter session set container=XEPDB1;
 
-CREATE USER MBG IDENTIFIED BY ${APX_PWD}
+CREATE USER MBG IDENTIFIED BY ${_APX_PWD}
       DEFAULT TABLESPACE SYSAUX
       TEMPORARY TABLESPACE TEMP;
 
