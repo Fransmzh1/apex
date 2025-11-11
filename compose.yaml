@@ -11,7 +11,7 @@ services:
     env_file:
      - ./all.env
     volumes:
-      # - oradata:/opt/oracle/oradata
+      - oradata:/opt/oracle/oradata
       - ./tunnel:/opt/tunnel:rw
       - ./dbxe/script_workspace:/opt/oracle/scripts/startup
     ports:
@@ -26,13 +26,10 @@ services:
     container_name: ora-ords
     hostname: oracle-ords
     restart: unless-stopped
-    environment:
-      - ORACLE_HOST=dbxe
-      - ORACLE_PORT=1521
     env_file:
      - ./all.env
     volumes:
-      # - ords-config:/opt/ords_config
+      - ords-config:/opt/ords_config
       - ./ords/script_startup:/opt/scripts/startup
       - ../mbg:/opt/tunnel:rw
     ports:

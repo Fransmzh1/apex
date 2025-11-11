@@ -16,7 +16,7 @@ else
 
    echo Akan setup ords..
    cd /opt
-   ords install --db-hostname ${ORACLE_HOST} --db-port ${ORACLE_PORT} --db-servicename XEPDB1 --admin-user sys --password-stdin << EOF
+   ords install --db-hostname ${ORACLE_HOST} --db-port ${ORACLE_PORT} --db-servicename ${PDB_NAME} --admin-user sys --password-stdin << EOF
 ${ORACLE_PWD}
 ${APX_PWD}
 EOF
