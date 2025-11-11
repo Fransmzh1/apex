@@ -2,7 +2,9 @@
 
 sqlplus -s "/ as sysdba" <<EOF
 
-alter session set container=XEPDB1;
+WHENEVER SQLERROR EXIT SQL.SQLCODE
+
+alter session set container=${PDB_NAME};
 
 CREATE USER MBG IDENTIFIED BY ${MBG_PWD}
       DEFAULT TABLESPACE SYSAUX
@@ -29,3 +31,8 @@ GRANT EXECUTE DYNAMIC MLE TO MBG;
 GRANT EXECUTE ON SYS.JAVASCRIPT TO MBG;
 
 EOF
+
+if [ $? -ne 0 ]; then
+  echo "Error creating user MBG"
+  exit 1
+fi    

@@ -13,6 +13,7 @@ COPY --chmod=764 --chown=oracle:oinstall scripts/* .
 ENV _APX_PWD=Mustika_jay4
 ENV _ADMIN_PWD=Mustika_123
 ENV ORACLE_PWD=dukuhzamrud
+ENV PDB_NAME=XEPDB1
 
 RUN ./setup_apex.sh
 RUN ./upgrade_apex.sh
