@@ -31,7 +31,7 @@ services:
     volumes:
       - ords-config:/opt/ords_config
       - ./ords/script_startup:/opt/scripts/startup
-      # - ../mbg:/opt/tunnel:rw
+      - ../mbg:/opt/tunnel:rw
     ports:
       - "8080:8080"
     depends_on:
