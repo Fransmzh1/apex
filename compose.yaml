@@ -12,7 +12,7 @@ services:
      - ./all.env
     volumes:
       - oradata:/opt/oracle/oradata
-      - ./tunnel:/opt/tunnel:rw
+      # - ./tunnel:/opt/tunnel:rw
       - ./dbxe/script_workspace:/opt/oracle/scripts/startup
     ports:
       - "11521:1521"
@@ -31,7 +31,7 @@ services:
     volumes:
       - ords-config:/opt/ords_config
       - ./ords/script_startup:/opt/scripts/startup
-      - ../mbg:/opt/tunnel:rw
+      # - ../mbg:/opt/tunnel:rw
     ports:
       - "8080:8080"
     depends_on:
