@@ -1,3 +1,5 @@
+# fransmzh/ords:1.3-app
+
 FROM fransmzh/ords:1.2-ps10
 
 EXPOSE 8080
@@ -12,5 +14,8 @@ ENV JAVA_OPTS="-Dconfig.url=/opt/ords_config"
 ENV PATH="/opt/ords/bin:/opt/sqlcl/bin:$PATH"
 ENV ORDS_CONFIG="/opt/ords_config"
 ENV ORACLE_PWD=dukuhzamrud
+
+WORKDIR /opt
+RUN mkdir dpdump
 
 CMD [ "bash","-c","/opt/scripts/runOrds.sh" ]
