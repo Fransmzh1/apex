@@ -1,4 +1,6 @@
 prompt --application/set_environment
+prompt Apply Workspace WKS1
+prompt
 set define off verify off feedback off
 whenever sqlerror exit sql.sqlcode rollback
 alter session set container=XEPDB1;

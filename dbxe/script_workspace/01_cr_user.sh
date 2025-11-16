@@ -1,7 +1,7 @@
 #!/bin/bash
 
 sqlplus -s "/ as sysdba" <<EOF
-startup
+
 WHENEVER SQLERROR EXIT SQL.SQLCODE
 
 alter session set container=${PDB_NAME};
@@ -36,17 +36,3 @@ if [ $? -ne 0 ]; then
   echo "Error creating user MBG"
   exit 1
 fi    
-
-exit 
-
-### di bagian ini untuk test build image 1.2-apex241210
-###
-lsnrctl start
-echo ""
-echo TEST: sqlplus system/${ORACLE_PWD}@${PDB_NAME}
-sqlplus system/${ORACLE_PWD} <<EOF
-alter session set container=${PDB_NAME};
-EOF
-
-echo "impdp --"
-# impdp system/${ORACLE_PWD}@localhost:1521/xepdb1 directory=apex_dir dumpfile=expdat.dmp schemas=MBG exclude=user
