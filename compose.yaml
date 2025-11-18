@@ -3,11 +3,11 @@ name: apex
 services:
 
   db:
-    image: fransmzh/apexdb:1.0-apex24210
-    # image: fransmzh/apexdb:1.2-apex24210
-    # build:
-    #   context: ./dbxe
-    #   dockerfile: 1.2-apex24210.Dockerfile
+    # image: fransmzh/apexdb:1.0-apex24210
+    image: fransmzh/apexdb:1.2-apex24210
+    build:
+      context: ./dbxe
+      dockerfile: 1.2-apex24210.Dockerfile
     container_name: ora-xe
     hostname: dbxe
     restart: unless-stopped
@@ -15,10 +15,10 @@ services:
     env_file:
      - ./all.env
     volumes:
-      # - oradata:/opt/oracle/oradata
+      - oradata:/opt/oracle/oradata
       # - ./tunnel:/opt/tunnel:rw                                                                                                                             
-      # - ./dumpfile:/opt/oracle/dpdump
-      - ./dbxe/script_workspace:/opt/oracle/scripts/startup
+      - ./dbdump:/opt/oracle/dpdump
+      # - ./dbxe/script_workspace:/opt/oracle/scripts/startup
     ports:
       - "11521:1521"
     networks:
