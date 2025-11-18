@@ -17,7 +17,7 @@ services:
     volumes:
       - oradata:/opt/oracle/oradata
       # - ./tunnel:/opt/tunnel:rw                                                                                                                             
-      - ./dbdump:/opt/oracle/dpdump
+      # - ./dbdump:/opt/oracle/dpdump
       # - ./dbxe/script_workspace:/opt/oracle/scripts/startup
     ports:
       - "11521:1521"
@@ -34,9 +34,8 @@ services:
     env_file:
      - ./all.env
     volumes:
-      # - ords-config:/opt/ords_config
+      - ords-config:/opt/ords_config
       - ./ords/script_startup:/opt/scripts/startup
-      # - ./dumpfile:/opt/dumpfile
       - ../mbg:/opt/tunnel:rw
     ports:
       - "8080:8080"
