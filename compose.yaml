@@ -11,13 +11,12 @@ services:
     container_name: ora-xe
     hostname: dbxe
     restart: unless-stopped
-    # environment:
     env_file:
-     - ./all.env
+      - ./all.env
     volumes:
-      - oradata:/opt/oracle/oradata
+      # - oradata:/opt/oracle/oradata
       # - ./tunnel:/opt/tunnel:rw                                                                                                                             
-      # - ./dbdump:/opt/oracle/dpdump
+      - ./dbdump:/opt/oracle/dpdump
       # - ./dbxe/script_workspace:/opt/oracle/scripts/startup
     ports:
       - "11521:1521"

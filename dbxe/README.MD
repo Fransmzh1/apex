@@ -111,3 +111,6 @@ docker rmi <image-name>:<tag>
 Add your project license or link to LICENSE file.
 
 <!-- Replace placeholders (e.g. <image-name>, <tag>) with real values for your project. -->
+
+/opt/oracle/dpdump contains seed data of mbg schema that will be imported to database XEPDB1 at startup.
+If you have last backup of MBG schema, mount the folder with MBG_YYYYMMDD.dmp file on it, and mount to /opt/oracle/dpdump folder.
