@@ -15,9 +15,8 @@ services:
       - ./all.env
     volumes:
       - oradata:/opt/oracle/oradata
-      # - ./tunnel:/opt/tunnel:rw                                                                                                                             
-      # - ./dbdump:/opt/oracle/dpdump
-      # - ./dbxe/script_workspace:/opt/oracle/scripts/startup
+      - ./dbdump:/opt/oracle/dpdump
+      # - ./tunnel:/opt/tunnel:rw                                                                                                                                  # - ./dbxe/script_workspace:/opt/oracle/scripts/startup
     ports:
       - "11521:1521"
     networks:
