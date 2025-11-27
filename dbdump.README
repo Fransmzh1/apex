@@ -1,0 +1,4 @@
+folder dbdump adalah hos folder untuk mounting ke container, dan berisi file hasil expdp dari database oracle. 
+Agar file dbdump bisa diakses oleh container oracle db, pastikan ownershipnya adalah 54321:54321 dengan menjalankan command berikut:
+
+chown -R 54321:54321 dbdump
