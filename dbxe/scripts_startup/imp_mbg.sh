@@ -17,7 +17,10 @@ FILE_NAME=$(ls -v *.dmp | tail -n1)
 echo import file $FILE_NAME
 echo ""
 impdp system/${ORACLE_PWD}@${PDB_NAME} schemas=MBG directory=APEX_DIR dumpfile=$FILE_NAME logfile=mbg_import.log logtime=ALL
-
 #EXCLUDE=SCHEMA:"='MBG'"
+sqlplus -s / as sysdba <<EOF
+alter user MBG identified by "${MBG_PWD}";
+EOF
+
 
 echo "$(date -Iseconds)" > ${ORACLE_BASE}/oradata/.mbg.created
