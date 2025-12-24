@@ -19,6 +19,7 @@ echo ""
 impdp system/${ORACLE_PWD}@${PDB_NAME} schemas=MBG directory=APEX_DIR dumpfile=$FILE_NAME logfile=mbg_import.log logtime=ALL
 #EXCLUDE=SCHEMA:"='MBG'"
 sqlplus -s / as sysdba <<EOF
+alter session set container=${PDB_NAME};
 alter user MBG identified by "${MBG_PWD}";
 EOF
 
